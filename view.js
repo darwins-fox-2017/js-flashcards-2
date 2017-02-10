@@ -1,23 +1,33 @@
 "use strict"
 // write your code here
 
-export default class View {
-  static correctMessage() {
+export default class View{
+
+  opening(){
+    console.log(`\nWelcome to JS Flash Cards. You are using the deck 'data.json'\nTo play, just enter the correct term for each definition\n`);
   }
 
-  static incorrectMessage() {
+  closing(){
+    console.log(`Thank you for playing, have a nice day`);
   }
 
-  static wrongAnswer(wrongCount) {
+  definition(){
+    return `Definition : `
   }
 
-  static question(x) {
+  correctAnswer(){
+    console.log(`Correct! `);
   }
 
-  static win() {
+  incorrectAnswer(){
+    return `Incorrect! tryagain `
   }
 
-  static welcome(x) {
-    return `Welcome to JS Flash Cards. To play, just enter the correct term for each definition. Ready? Go!\n\nDefinition\n${x}\n\nGuess: `
+  guess(){
+    return `Guess: `
+  }
+
+  wrongCount(count){
+    console.log(`You have answered ${count} times wrong\n`);
   }
 }

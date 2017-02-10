@@ -1,21 +1,58 @@
 "use strict"
-// write your code here
+let jsonfile = require ('jsonfile')
+const readline = require('readline')
+const argv = process.argv
 
-import Model from "./model"
-import View from "./view"
-import readline from "readline"
-let jsonfile = require('jsonfile')
 
-export default class Controller {
 
-  constructor(source){
-    this.model = new Model(source)
+class Models{
+  static data(){
+    return jsonfile.readFileSync('social.json')
+  }
+}
+
+class Views{
+  constructor(){
+
   }
 
-  run(){
-    let view = new View()
-    let questions = this.model.getData()
+  opening(){
+    console.log(`\nWelcome to JS Flash Cards. You are using the deck 'data.json'\nTo play, just enter the correct term for each definition\n`);
+  }
 
+  closing(){
+    console.log(`Thank you for playing, have a nice day`);
+  }
+
+  definition(){
+    return `Definition : `
+  }
+
+  correctAnswer(){
+    console.log(`Correct! `);
+  }
+
+  incorrectAnswer(){
+    return `Incorrect! tryagain `
+  }
+
+  guess(){
+    return `Guess: `
+  }
+
+  wrongCount(count){
+    console.log(`You have answered ${count} times wrong\n`);
+  }
+}
+
+class Controllers{
+  controller(){
+
+  }
+
+  start(source){
+    let view = new Views()
+    let questions = Models.data()
     let i = 0
     const rl = readline.createInterface({
       input : process.stdin,
@@ -60,4 +97,7 @@ export default class Controller {
 
   }
 
+
 }
+
+control.start()

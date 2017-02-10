@@ -2,12 +2,15 @@
 // write your code here
 
 import fs from "fs"
+let jsonfile = require('jsonfile')
 
 export default class Model {
-  constructor(source) {
-    this.source = source;
+  
+  constructor(sources) {
+    this.source = sources;
   }
+
   getData() {
-    return JSON.parse(fs.readFileSync(this.source, "utf8"));
+    return jsonfile.readFileSync(this.source)
   }
 }
