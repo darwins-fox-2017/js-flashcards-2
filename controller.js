@@ -42,9 +42,10 @@ export default class Controller {
           } else {
             this.incorrect()
           }
+        }
       } else {
           this.win()
-      }
+        }
     })
   }
 
