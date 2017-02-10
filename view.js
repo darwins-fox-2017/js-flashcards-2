@@ -11,7 +11,8 @@ export default class View {
     console.log('Yak betul!');
   }
 
-  static wrongComment(){
+  static wrongComment(wrong){
+    console.log(`Salah ke ${wrong+1}`);
     console.log('Duh Salah tuh! Ulang!! #Ci windi style');
   }
 
