@@ -1,30 +1,16 @@
 "use strict"
-// write your code here
 
-const fs = require('fs')
+let Model = require('./model')
+let View = require('./view')
+
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
 
-class Model {
-    constructor(answer) {
-        this.answer = answer
-    }
-    getData() {
-        return JSON.parse(fs.readFileSync("social.json", "utf-8"))
-    }
-}
 
-class View {
-    static header() {
-        console.log('Wellcome to JS flash Card. To play, just enter the correct term for each definition. \n' +
-            'Are You Ready ?? Lets Goooooo !!  \n');
-    }
-}
-
-class Controller {
+module.exports = class Controller {
     start() {
         let i = 0;
         let x = 0;
@@ -41,6 +27,7 @@ class Controller {
                 if (i < questions.length) {
                     rl.setPrompt(`${questions[i]['definition']} \n`);
                     rl.prompt()
+                    x = 0
                 } else {
                     rl.close()
                 }
@@ -53,7 +40,6 @@ class Controller {
 
             }else {
                 x++
-
                 console.log(`Your input ${line} is false! ${x}`);
                 rl.prompt()
             }
@@ -64,6 +50,3 @@ class Controller {
         });
     }
 }
-
-var app = new Controller()
-app.start()
