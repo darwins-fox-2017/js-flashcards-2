@@ -21,11 +21,9 @@ class Controller {
         correct++
       } else if(answer === 'skip') {
         questions.push(questions[questionLine])
-        // console.log({questions[questionLine].definition:questions[questionLine].term})
         questionLine++
       } else {
-        wrong++
-        View.wrongComment()
+        View.wrongComment(wrong++)
       }
 
       if (questionLine < questions.length) {
