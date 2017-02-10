@@ -5,18 +5,21 @@ let Model = require('./model')
 let readline = require('readline')
 
 module.exports = class Controller {
-    constructor(fileName) {
+    constructor() {
         this.view = new View()
-        this.model = new Model(fileName)
+        this.model = new Model()
         this.rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
             prompt: 'Aloha > '
         });
+        this.arguments = process.argv.splice(2, process.argv.length -1)
     }
 
     init() {
-        console.log('running');
+        if (this.arguments.length > 0) {
+          this.model.setFileName(this.arguments.join(''))
+        }
         this.model.parseFile()
         this.view.welcomeMessage()
 

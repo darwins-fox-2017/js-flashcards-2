@@ -3,14 +3,19 @@
 let jsonfile = require('jsonfile')
 
 module.exports = class Model {
-    constructor(fileName) {
-        this.fileName = fileName
+    constructor() {
+        this.fileName = ''
         this.questionList = []
     }
 
     parseFile() {
-        debugger
         this.questionList = jsonfile.readFileSync(this.fileName)
+    }
+
+    setFileName(fileName){
+      console.log(fileName);
+      this.fileName = fileName
+      return true
     }
 
     writeToFile() {

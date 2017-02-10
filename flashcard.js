@@ -2,6 +2,6 @@
 
 let Controller = require('./controller')
 
-let controller = new Controller('social.json')
+let controller = new Controller()
 
 controller.init()
