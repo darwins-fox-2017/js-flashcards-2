@@ -3,11 +3,15 @@
 import fs from 'fs'
 
 export default class Model {
-  constructor(file) {
-    this.file = file
+  constructor(source) {
+    this.file = source || "social.json"
   }
 
   getData(){
-    return JSON.parse(fs.readFileSync(this.file, "utf-8"))
+    let resultParse = JSON.parse(fs.readFileSync(this.file, "utf-8"))
+    for (let i = 0; i < resultParse.length; i++) {
+      resultParse[i]["wrongCount"] = 0
+    }
+    return resultParse
   }
 }
