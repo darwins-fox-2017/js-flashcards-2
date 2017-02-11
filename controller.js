@@ -10,6 +10,7 @@ export default class Controller {
 
   constructor(source){
     this.model = new Model(source)
+    this.file = source
   }
 
   run(){
@@ -22,8 +23,8 @@ export default class Controller {
       output : process.stdout
     });
 
-    view.opening()
-    rl.setPrompt(view.definition()+ ` ${questions[i].definition}\n\n` + view.guess())
+    view.opening(this.file)
+    rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
 
     rl.prompt();
 
@@ -33,19 +34,20 @@ export default class Controller {
           case questions[i].term.toUpperCase():
             view.correctAnswer();
             (i==questions.length-1)? rl.close() : i++
-            rl.setPrompt(`\n` + view.definition()+ ` ${questions[i].definition}\n\n` + view.guess())
+            rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
             rl.prompt()
             break;
 
           case "SKIP":
             questions.push(questions[i])
             i++
-            rl.setPrompt(`\n` + view.definition()+ ` ${questions[i].definition}\n\n` + view.guess())
+            rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
             rl.prompt()
             break;
 
           default:
-            questions.hasOwnProperty("wrong")? questions[i].wrong++ : questions[i].wrong = 1
+            questions[i].hasOwnProperty("wrong")? questions[i].wrong++ : questions[i].wrong = 1
+            console.log(questions[i].wrong);
             view.wrongCount(questions[i].wrong)
             view.incorrectAnswer()
             rl.prompt()

@@ -1,10 +1,10 @@
 "use strict"
 
 import Controller from "./controller"
-let argv = process.argv
+let file = process.argv[2] || 'social.json'
 
 // Controller
 
-let controller = new Controller('social.json')
+let controller = new Controller(file)
 
 controller.run();

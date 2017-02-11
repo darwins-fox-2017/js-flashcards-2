@@ -3,16 +3,16 @@
 
 export default class View{
 
-  opening(){
-    console.log(`\nWelcome to JS Flash Cards. You are using the deck 'data.json'\nTo play, just enter the correct term for each definition\n`);
+  opening(file){
+    console.log(`\nWelcome to JS Flash Cards. You are using the deck '${file}'\nTo play, just enter the correct term for each definition\n`);
   }
 
   closing(){
-    console.log(`Thank you for playing, have a nice day`);
+    console.log(`\nThank you for playing, have a nice day`);
   }
 
   definition(){
-    return `Definition : `
+    return '\nDefinition :\n'
   }
 
   correctAnswer(){
@@ -20,11 +20,11 @@ export default class View{
   }
 
   incorrectAnswer(){
-    return `Incorrect! tryagain `
+    return `Incorrect! try again `
   }
 
   guess(){
-    return `Guess: `
+    return 'Guess: '
   }
 
   wrongCount(count){
