@@ -1,8 +1,8 @@
 [
-  {"definition": "Suatu fungsi kuadarat f(x) = ax^2 + bx + c dikatakan definit positif apabila nilai diskriminan D>0 dan ?, ", "term": "a>0"},
+  {"definition": "Suatu fungsi kuadarat f(x) = ax^2 + bx + c dikatakan definit positif apabila nilai diskriminan D<0 dan ?, ", "term": "a>0"},
   {"definition": "Nilai peluang suatu kejadian yang pasti ada adalah?", "term": "1"},
   {"definition": "Syarat nilai Diskriminan suatu fungsi kuadrat f(x) = ax^2 + bx + c yang memiliki tepat satu titik potong pada sumbu-x adalah ", "term": "sama dengan 0"},
   {"definition": "Diketahui p(x) = ax^5 + bx - 1 dengan a dan b konstan. Jika p(x) dibagi dengan (x-2017) bersisa 3, maka bila p(x) dibagi dengan (x+2017) akan bersisa", "term": "-5"},
-  {"definition": "Misal a = sqrt(20 + sqrt(20 + sqrt(20 + sqrt(20 + ...)))) dan a = sqrt(6 + sqrt(6 + sqrt(6 + sqrt(6 + ...)))). Nilai a+b adalah", "term": "8"},
+  {"definition": "Misal a = sqrt(20 + sqrt(20 + sqrt(20 + sqrt(20 + ...)))) dan b = sqrt(6 + sqrt(6 + sqrt(6 + sqrt(6 + ...)))). Nilai a+b adalah", "term": "8"},
   {"definition": "Nilai rata-rata tes live koding di suatu batch adalah 72. Nilai rata-rata siswa putri adalah 75 dan nilai rata-rata siswa putra adalah 70. jika banyaknya siswa putra 6 lebih banyak dari siswa putri, maka banyaknya siswa di batch tersebut adalah", "term": "30"}
 ]

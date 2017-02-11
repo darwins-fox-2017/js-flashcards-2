@@ -29,32 +29,28 @@ export default class Controller {
     rl.prompt();
 
     rl.on('line', (answer) => {
-      if(i<questions.length){
-        switch (answer.trim().toUpperCase()) {
-          case questions[i].term.toUpperCase():
-            view.correctAnswer();
-            (i==questions.length-1)? rl.close() : i++
-            rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
-            rl.prompt()
-            break;
+      switch (answer.trim().toUpperCase()) {
+        case questions[i].term.toUpperCase():
+          view.correctAnswer();
+          (i==questions.length-1)? rl.close() : i++
+          rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
+          rl.prompt()
+          break;
 
-          case "SKIP":
-            questions.push(questions[i])
-            i++
-            rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
-            rl.prompt()
-            break;
+        case "SKIP":
+          questions.push(questions[i])
+          i++
+          rl.setPrompt(view.definition() + `${questions[i].definition} ` + view.guess())
+          rl.prompt()
+          break;
 
-          default:
-            questions[i].hasOwnProperty("wrong")? questions[i].wrong++ : questions[i].wrong = 1
-            console.log(questions[i].wrong);
-            view.wrongCount(questions[i].wrong)
-            view.incorrectAnswer()
-            rl.prompt()
-        }
-      }else {
-        rl.close()
+        default:
+          questions[i].hasOwnProperty("wrong")? questions[i].wrong++ : questions[i].wrong = 1
+          view.wrongCount(questions[i].wrong)
+          view.incorrectAnswer()
+          rl.prompt()
       }
+      
     }).on('close', () => {
       view.closing()
       process.exit(0);

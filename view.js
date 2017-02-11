@@ -28,6 +28,6 @@ export default class View{
   }
 
   wrongCount(count){
-    console.log(`You have answered ${count} times wrong\n`);
+    console.log(`You have answered ${count} times wrong in this question\n`);
   }
 }
