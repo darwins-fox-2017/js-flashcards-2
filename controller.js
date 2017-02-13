@@ -3,8 +3,8 @@ import View from './view'
 import * as readline from 'readline'
 
 export default class Controller {
-  constructor() {
-    this.model           = new Model('social.json')
+  constructor(file) {
+    this.model           = new Model(file)
     this.view            = View
     this.currentQuestion = 0
     this.questionRemain  = this.model.readData().getParseData().length
@@ -17,7 +17,7 @@ export default class Controller {
       input : process.stdin,
       output: process.stdout,
     })
-    
+
     rl.setPrompt(this.view.displayQuestion(this.data[this.currentQuestion].definition))
     rl.prompt()
 
@@ -52,4 +52,3 @@ export default class Controller {
     })
   }
 }
-
