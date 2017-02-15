@@ -7,15 +7,19 @@ export default class View {
 		return `${data}?`
 	}
 
+	static skip(pertanyaan) {
+		console.log(pertanyaan)
+	}
+
 	static alertBenar() {
-		console.log("Jawaban Anda benar!")
+		console.log(`Jawaban Anda benar!`)
 	}
 
 	static alertSalah() {
-		console.log(`Salah ke ${wrong+1}`)
+		console.log(`Jawaban Anda salah!`)
 	}
 
-	static keluar() {
-		console.log(`Selamat Anda menang!`)
+	static keluar(benar, salah) {
+		console.log(`Terimakasih ! Anda benar ${benar} dan salah ${salah}`)
 	}
-} 
+}  

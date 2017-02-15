@@ -1,47 +1,54 @@
 "use strict"
-
+ 
 import Model from './model'
-import View from './view'
+import View from './view' 
 
-class Controller {
+export default class Controller {
+	constructor(file) {
+		this.file = file
+		this.soalno = 0
+		this.salah = 0
+		this.benar = 0
+	}
 
 	tampilData() {
-		const radline = require('readline')
+		const readline = require('readline')
 		const rl = readline.createInterface({ 
 			input: process.stdin,
 			output: process.stdout
 		})
-		let soalno = 0
-		let benar = 0
-		let salah = 0
-
-		let pertanyaan = Model.loadDataJSON()
-		rl.setPrompt(View.show(pertanyaan[soalno].definition))
+		// let soalno = 0
+		// let benar = 0
+		// let salah = 0
+ 
+		let pertanyaan = Model.loadDataJSON(this.file)
+		//console.log(pertanyaan)
+		rl.setPrompt(View.show(pertanyaan[this.soalno].definition))
 		rl.prompt()
 		rl.on('line', (jawaban) => {
-			if(jawaban.toLowerCase() === pertanyaan[soalno].term.toLowerCase()) {
+			if(jawaban.toLowerCase() === pertanyaan[this.soalno].term.toLowerCase()) {
 				View.alertBenar()
-				soalno++
-				benar++
+				this.soalno++
+				this.benar++
+				if(this.soalno < pertanyaan.length) {
+					rl.setPrompt(pertanyaan[this.soalno].definition + "\n")
+					rl.prompt()		
+				} else {
+					rl.close()
+					View.keluar()
+				}
 			} else if(jawaban === 'skip') {
-				pertanyaan.push(pertanyaan[soalno])
-				soalno++
+				pertanyaan.push(pertanyaan[this.soalno])
+				this.soalno++
+				View.skip(pertanyaan[this.soalno].definition)
 			} else {
-				View.alertSalah(salah++)
-			}
-
-			if(soalno < pertanyaan.length) {
-				rl.setPrompt(View.show(pertanyaan[soalno].definition))
+				View.alertSalah()
+				this.salah++
 				rl.prompt()
-			} else {
-				rl.close()
-			}
+			}			
 		}).on('close', () => {
-			View.exit()
+			View.keluar(this.benar, this.salah)
 			process.exit(0)
 		})
 	}
 }
-
-let controller = new Controller()
-controller.tampilData(	)

@@ -3,8 +3,13 @@
 const fs = require('fs')
 
 export default class Model {
-	static loadDataJSON() {
+	// constructor(file) {
+	// 	this.file = file
+	// }
+	static loadDataJSON(file) {
 		// baca file
-		return JSON.parse(fs.readFileSync('social.json', 'utf-8'))
+		console.log(file)
+		return JSON.parse(fs.readFileSync(file, 'utf-8'))
 	}
 }
+ 
