@@ -11,11 +11,16 @@ const rl = readline.createInterface({
 
 
 module.exports = class Controller {
+  constructor(file){
+    this.file = file
+  }
     start() {
         let i = 0;
         let x = 0;
-        let model = new Model()
+        let j = 0
+        let model = new Model(this.file)
         let questions = model.getData()
+        // let questions2 = model.getData2()
 
         View.header()
 

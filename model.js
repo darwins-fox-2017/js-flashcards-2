@@ -3,10 +3,10 @@
 const fs = require('fs')
 
 module.exports = class Model {
-    constructor(answer) {
-        this.answer = answer
+    constructor(file) {
+        this.file = file
     }
     getData() {
-        return JSON.parse(fs.readFileSync("social.json", "utf-8"))
+        return JSON.parse(fs.readFileSync(this.file, "utf-8"))
     }
 }
