@@ -4,7 +4,7 @@ import Controller from './controller'
 
 export default class View {
   static show(data) {
-    return `${data}?`
+    return `${data}  `
   }
 
   static rightComment(){

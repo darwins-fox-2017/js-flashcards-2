@@ -3,15 +3,26 @@
 import Model from './model'
 import View from './view'
 
+const readline = require('readline');
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout});
+
 class Controller {
 
-  promptData(){
-    const readline = require('readline');
-    const rl = readline.createInterface({ input: process.stdin, output: process.stdout});
+  promptData(answer){
     let questionLine = 0
     let correct = 0
     let wrong = 0
-    let questions = Model.loadData()
+    if (Number(answer) === 1 ) {
+      answer = "social.json"
+    } else {
+      answer = "social2.json"
+    }
+    console.log();
+    console.log("=======================================");
+    console.log("Selamat Datang di kuis trivia suka suka");
+    console.log("=======================================");
+    console.log();
+    let questions = Model.loadData(answer)
     rl.setPrompt(View.show(questions[questionLine].definition))
     rl.prompt();
     rl.on('line', (answer) => {
@@ -40,5 +51,7 @@ class Controller {
 
 }
 
-let controller = new Controller()
-controller.promptData()
+rl.question('Silakan pilih no quiz flash card 1 atau 2 ', function(answer){
+  let controller = new Controller()
+  controller.promptData(answer)
+})

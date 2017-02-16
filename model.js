@@ -3,7 +3,7 @@
 const fs = require('fs')
 
 export default class Model {
-  static loadData() {
-    return JSON.parse(fs.readFileSync("social.json", "utf-8"))
+  static loadData(answer) {
+    return JSON.parse(fs.readFileSync(answer, "utf-8"))
   }
 }
